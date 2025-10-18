@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Entity Setup in India – Interactive Checklist</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Business Entity Setup in India</h1>
+    <div class="header-actions">
+      <button id="resetProgress" title="Clear saved progress">Reset Progress</button>
+      <button id="exportProgress" title="Download a backup of your progress">Export Progress</button>
+      <input id="importFile" type="file" accept="application/json" hidden />
+      <button id="importProgress" title="Restore a backup">Import Progress</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="pane pane-left" aria-label="Overview Requirements">
+      <h2>Overview Requirements</h2>
+      <div id="overviewAccordion" class="accordion"></div>
+    </section>
+
+    <section class="pane pane-middle" aria-label="Checklist Sections">
+      <div class="tabs-header">
+        <h2>Checklist Sections</h2>
+        <input type="search" id="tabSearch" placeholder="Search sections…" aria-label="Search sections" />
+      </div>
+      <ul id="tabs" class="tabs" role="tablist" aria-label="Checklist Tabs"></ul>
+    </section>
+
+    <section class="pane pane-right" aria-label="Checklist Items">
+      <div class="pane-right-header">
+        <h2 id="currentTabTitle">Select a section</h2>
+        <div id="currentTabProgress" class="tab-progress" title="Section completion">
+          <span class="pct">0%</span>
+          <div class="bar"><div class="fill" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div id="checklistContainer" class="checklist"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer" role="contentinfo">
+    <div class="overall-progress">
+      <strong>Overall Progress:</strong>
+      <div class="bar"><div id="overallFill" class="fill" style="width:0%"></div></div>
+      <span id="overallPct" class="pct">0%</span>
+    </div>
+    <div class="feedback">
+      <button id="feedbackBtn" title="Send thanks or feedback">Thanks / Feedback</button>
+    </div>
+  </footer>
+
+  <template id="accordionSectionTpl">
+    <div class="accordion-section">
+      <button class="accordion-toggle" aria-expanded="false"></button>
+      <div class="accordion-content" hidden></div>
+    </div>
+  </template>
+
+  <template id="tabItemTpl">
+    <li class="tab" role="tab">
+      <button class="tab-btn">
+        <span class="tab-title"></span>
+        <span class="tab-badge" title="Completion">0%</span>
+      </button>
+    </li>
+  </template>
+
+  <template id="checklistGroupTpl">
+    <div class="group">
+      <h3 class="group-title"></h3>
+      <ul class="group-items"></ul>
+    </div>
+  </template>
+
+  <template id="checklistItemTpl">
+    <li class="item">
+      <label>
+        <input type="checkbox" />
+        <span class="text"></span>
+      </label>
+    </li>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
